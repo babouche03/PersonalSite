@@ -3,6 +3,7 @@ import * as THREE from 'three';
 import { time } from 'three/tsl';
 import ThreeText from './ThreeText';
 import logo from './profile.png';
+import { IconMap } from './icons';
 
 const App = () => {
   const canvasRef = useRef(null);
@@ -245,15 +246,14 @@ useEffect(() => {
             }}
           >
             <h2 className="text-6xl font-black">
-              BEYOND THE <span className="text-[#D2FF00]">TRACK</span>
+              BEYOND THE <span className="text-[#D2FF00]">SCREEN</span>
             </h2>
             <p className="text-lg text-gray-400 leading-relaxed">
-              From karting champion to Formula 1 star, my journey has been defined by speed, 
-              determination, and a relentless pursuit of excellence. On and off the track, 
-              I'm pushing boundaries and redefining what it means to be a modern racing driver.
+            Currently a software engineering student at Hefei University of Technology.
+            I am passionate about computer and creation.I don’t have any clear goals, I just want to do something cool.
             </p>
             <button className="px-8 py-4 bg-[#D2FF00] text-[#111112] font-bold uppercase tracking-wider hover:bg-white transition-colors duration-300">
-              Explore My Story
+              <a href='http://106.14.127.174/'>Explore My Story</a>
             </button>
           </div>
           
@@ -272,32 +272,133 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* Racing Stats */}
+      {/* Tech Stack */}
       <section id="racing" className="py-24 px-8">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-6xl font-black text-center mb-16">
-            2024 <span className="text-[#D2FF00]">SEASON</span>
+            Tech <span className="text-[#D2FF00]">Stack</span>
           </h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { label: 'RACES', value: '24' },
-              { label: 'WINS', value: '4' },
-              { label: 'PODIUMS', value: '18' },
-              { label: 'POINTS', value: '374' }
-            ].map((stat, i) => (
-              <div 
-                key={i}
-                className="p-8 bg-gradient-to-br from-[#D2FF00]/10 to-transparent border border-[#D2FF00]/20 rounded-xl text-center transform transition-all duration-500 hover:scale-105 hover:border-[#D2FF00]/50"
-                style={{
-                  transform: `translateY(${Math.max(0, (scrollProgress - 0.3) * -70 )}px)`,
-                  
-                }}
-              >
-                <div className="text-5xl font-black text-[#D2FF00] mb-2">{stat.value}</div>
-                <div className="text-sm uppercase tracking-widest text-gray-500">{stat.label}</div>
+          <div className="space-y-16">
+            {/* Frontend */}
+            <div 
+              className="transform transition-all duration-700"
+              style={{
+                transform: `translateX(${Math.max(0, (scrollProgress - 0.3) * -100)}px)`,
+                opacity: Math.min(1, Math.max(0, (scrollProgress - 0.2) * 10))
+              }}
+            >
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span className="text-[#D2FF00]">●</span> FRONTEND
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { name: 'React', icon: IconMap.react, color: 'from-blue-500/20' },
+                  { name: 'Vue', icon: IconMap.vue, color: 'from-green-500/20' },
+                  { name: 'TypeScript', icon: IconMap.typescript, color: 'from-blue-600/20' },
+                  { name: 'Webpack', icon:IconMap.webpack, color: 'from-[#D2FF00]/20' }
+                ].map((tech, i) => (
+                  <div
+                    key={i}
+                    className="group relative p-6 bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-gray-700/50 rounded-xl hover:border-[#D2FF00]/50 transition-all duration-500 hover:scale-105 cursor-pointer"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#D2FF00]/0 group-hover:from-[#D2FF00]/10 to-transparent rounded-xl transition-all duration-500"></div>
+                    <div className="relative space-y-3">
+                      <div className="w-20">{tech.icon}</div>
+                      <div className="text-sm font-bold uppercase tracking-wider text-[#D2FF00]">
+                        {tech.name}
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Backend */}
+            <div 
+              className="transform transition-all duration-700"
+              style={{
+                transform: `translateX(${Math.max(0, (scrollProgress - 0.35) * 100)}px)`,
+                opacity: Math.min(1, Math.max(0, (scrollProgress - 0.25) * 10))
+              }}
+            >
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span className="text-[#D2FF00]">●</span> BACKEND
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { name: 'Node.js', icon: IconMap.node, color: 'from-green-500/20' },
+                  { name: 'Python', icon: IconMap.python, color: 'from-yellow-500/20' },
+                  { name: 'Go', icon: IconMap.go, color: 'from-cyan-500/20' },
+                  { name: 'Spring', icon: IconMap.spring, color: 'from-[#D2FF00]/20' }
+                ].map((tech, i) => (
+                  <div
+                    key={i}
+                    className="group relative p-6 bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-gray-700/50 rounded-xl hover:border-[#D2FF00]/50 transition-all duration-500 hover:scale-105 cursor-pointer"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#D2FF00]/0 group-hover:from-[#D2FF00]/10 to-transparent rounded-xl transition-all duration-500"></div>
+                    <div className="relative space-y-3">
+                      <div className="w-20">{tech.icon}</div>
+                      <div className="text-sm font-bold uppercase tracking-wider text-[#D2FF00]">
+                        {tech.name}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Other Languages */}
+            <div 
+              className="transform transition-all duration-700"
+              style={{
+                transform: `translateX(${Math.max(0, (scrollProgress - 0.4) * -100)}px)`,
+                opacity: Math.min(1, Math.max(0, (scrollProgress - 0.25) * 10))
+              }}
+            >
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <span className="text-[#D2FF00]">●</span> OTHERS
+              </h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { name: 'C++', icon: IconMap['c++'], color: 'from-blue-600/20' },
+                  { name: 'Threejs', icon: IconMap.three, color: 'from-red-500/20' },
+                  { name: 'Swift', icon: IconMap.swift, color: 'from-orange-500/20' },
+                  { name: 'Tailwind', icon: IconMap.tailwind, color: 'from-purple-500/20' }
+                ].map((tech, i) => (
+                  <div
+                    key={i}
+                    className="group relative p-6 bg-gradient-to-br from-gray-900/50 to-gray-800/30 border border-gray-700/50 rounded-xl hover:border-[#D2FF00]/50 transition-all duration-500 hover:scale-105 cursor-pointer"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#D2FF00]/0 group-hover:from-[#D2FF00]/10 to-transparent rounded-xl transition-all duration-500"></div>
+                    <div className="relative space-y-3">
+                      <div className="w-20">{tech.icon}</div>
+                      <div className="text-sm font-bold uppercase tracking-wider text-[#D2FF00]">
+                        {tech.name}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Skills Summary */}
+            <div className="relative p-8 bg-gradient-to-br from-[#D2FF00]/10 to-transparent border border-[#D2FF00]/30 rounded-2xl backdrop-blur-sm"
+              style={{
+                transform: `translateX(${Math.max(0, (scrollProgress - 0.4) * -100)}px)`,
+                opacity: Math.min(1, Math.max(0, (scrollProgress - 0.35) * 15))
+              }}>
+              <div className="absolute inset-0 bg-gradient-to-br from-[#D2FF00]/5 to-transparent rounded-2xl"></div>
+              <div className="relative">
+                <h3 className="text-xl font-black mb-4">EXPERTISE AREAS</h3>
+                <div className="grid md:grid-cols-2 gap-4 text-gray-300">
+                  <div>✓ Full Stack Web Development</div>
+                  <div>✓ System Programming</div>
+                  <div>✓ Mobile Development</div>
+                  <div>✓ Algorithm & Data Structures</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -504,14 +605,14 @@ useEffect(() => {
             <div className="flex-shrink-0 w-screen h-screen flex items-center justify-center">
               <div className="text-center space-y-6">
                 <div className="text-9xl font-black text-[#D2FF00]/20 mb-4">
-                  2025+
+                  2026+
                 </div>
                 <h3 className="text-5xl font-black">
                   THE JOURNEY<br />
                   <span className="text-[#D2FF00]">CONTINUES</span>
                 </h3>
                 <p className="text-gray-400 max-w-md mx-auto">
-                  每一次比赛都是新的挑战，每一个赛季都是新的开始
+                  生命还没结束自然就有它的目的
                 </p>
               </div>
             </div>
